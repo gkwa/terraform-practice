@@ -1,0 +1,7 @@
+* Summary
+
+#+BEGIN_SRC 
+terraform plan -var-file=~/.ssh/secrets.tfvars
+terraform apply -var-file=~/.ssh/secrets.tfvars
+terraform destroy -var-file=~/.ssh/secrets.tfvars
+#+END_SRC

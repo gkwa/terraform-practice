@@ -4,8 +4,9 @@ provider "aws" {
   region = "${var.region}"
 }
 
-resource "aws_security_group" "allow_all" {
-  name = "allow_all"
+resource "aws_security_group" "StreamboxLive" {
+  tags { Name = "StreamboxLive" }
+  name = "StreamboxLive"
   description = "Allow all inbound traffic"
 
   ingress {

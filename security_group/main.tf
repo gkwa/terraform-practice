@@ -4,9 +4,9 @@ provider "aws" {
   region = "${var.region}"
 }
 
-resource "aws_security_group" "StreamboxLive" {
-  tags { Name = "StreamboxLive" }
-  name = "StreamboxLive"
+resource "aws_security_group" "StreamboxLive-test" {
+  tags { Name = "StreamboxLive-test" }
+  name = "StreamboxLive-test"
   description = "Allow all inbound traffic"
   vpc_id = "vpc-981020fd"
 

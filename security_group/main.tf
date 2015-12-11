@@ -8,7 +8,7 @@ resource "aws_security_group" "StreamboxLive" {
   tags { Name = "StreamboxLive" }
   name = "StreamboxLive"
   description = "Allow all inbound traffic"
-  vpc_id = "vpc-b3e71fd6"
+  vpc_id = "vpc-981020fd"
 
   ingress {
     from_port = 0

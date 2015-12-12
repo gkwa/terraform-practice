@@ -38,3 +38,12 @@ terraform --help
 terraform --help apply
 terraform --help destroy
 #+END_SRC
+* TODO Question: is there a way to make provisioning happen after IP/DNS setup
+
+Use case: I want chef server to install in provisioning step, but during
+the install, I'd like to ssh into machine and do other things, but
+provisioning happens before DNS/IP is output so I don't know how to ssh
+into machine.  Instead I have to wait for chef to fully install which
+takes a while.
+
+Is there a way to get IP before provisioning is started?

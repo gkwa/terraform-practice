@@ -5,6 +5,7 @@
 - [Example terraform templates](#example-terraform-templates)
 - [AWS console for us-west-1](#aws-console-for-us-west-1)
 - [Usage](#usage)
+- [empty](#empty)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -30,6 +31,11 @@ Usage
     make create
     make destroy
 
+empty
+=====
+
+    terraform graph -draw-cycles -verbose >o.dot; dot o.dot -Tpng >o.png; open o.png
+
     [demo@demos-MacBook-Pro:~/pdev/terraform-practice/chef-test(wip)]$  terraform plan -destroy -var region=us-west-1 -state=us-west-1.tfstate -var-file=~/.ssh/terraform.tfvars
     Refreshing Terraform state prior to plan...
 
@@ -54,5 +60,6 @@ Usage
 
     Error running plan: 1 error(s) occurred:
 
-    * Cycle: aws_security_group.bastion (destroy), output.ip, aws_security_group.bastion, module.vpc.aws_subnet.public, module.vpc.output.public_subnets, aws_instance.win2008, aws_instance.win2008 (destroy), module.vpc.aws_subnet.public (destroy), module.vpc.aws_vpc.mod (destroy), module.vpc.aws_vpc.mod, module.vpc.output.vpc_id
+     * Cycle: aws_security_group.bastion (destroy), output.ip, aws_security_group.bastion, module.vpc.aws_subnet.public, module.vpc.output.public_subnets, aws_instance.win2008, aws_instance.win2008 (destroy), module.vpc.aws_subnet.public (destroy), module.vpc.aws_vpc.mod (destroy), module.vpc.aws_vpc.mod, module.vpc.output.vpc_id
     [demo@demos-MacBook-Pro:~/pdev/terraform-practice/chef-test(wip)]$
+

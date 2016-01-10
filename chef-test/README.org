@@ -17,7 +17,8 @@ terraform destroy -force -var-file=~/.ssh/terraform.tfvars
 make create
 make destroy
 #+END_SRC
-*
+
+* empty
 
 #+BEGIN_SRC
 terraform graph -draw-cycles -verbose >o.dot; dot o.dot -Tpng >o.png; open o.png
@@ -48,6 +49,6 @@ module.vpc.aws_route_table_association.public.2: Refreshing state... (ID: rtbass
 
 Error running plan: 1 error(s) occurred:
 
-* Cycle: aws_security_group.bastion (destroy), output.ip, aws_security_group.bastion, module.vpc.aws_subnet.public, module.vpc.output.public_subnets, aws_instance.win2008, aws_instance.win2008 (destroy), module.vpc.aws_subnet.public (destroy), module.vpc.aws_vpc.mod (destroy), module.vpc.aws_vpc.mod, module.vpc.output.vpc_id
+ * Cycle: aws_security_group.bastion (destroy), output.ip, aws_security_group.bastion, module.vpc.aws_subnet.public, module.vpc.output.public_subnets, aws_instance.win2008, aws_instance.win2008 (destroy), module.vpc.aws_subnet.public (destroy), module.vpc.aws_vpc.mod (destroy), module.vpc.aws_vpc.mod, module.vpc.output.vpc_id
 [demo@demos-MacBook-Pro:~/pdev/terraform-practice/chef-test(wip)]$
 #+END_SRC

@@ -91,14 +91,7 @@ resource "aws_instance" "win2008" {
 
   tags { Name = "chef-test-win2008" }
 
-  user_data = <<EOF
-<script>
-  winrm quickconfig -q & winrm set winrm/config/winrs @{MaxMemoryPerShellMB="300"} & winrm set winrm/config @{MaxTimeoutms="1800000"} & winrm set winrm/config/service @{AllowUnencrypted="true"} & winrm set winrm/config/service/auth @{Basic="true"}
-</script>
-<powershell>
-  netsh advfirewall firewall add rule name="WinRM in HTTP" protocol=TCP dir=in profile=any localport=5985 remoteip=any localip=any action=allow && netsh advfirewall firewall add rule name="WinRM in HTTPS" protocol=TCP dir=in profile=any localport=5986 remoteip=any localip=any action=allow
-</powershell>
-EOF
+  user_data = "${file("user_data.txt")}"
 }
 
 output "name" {

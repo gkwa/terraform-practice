@@ -16,6 +16,10 @@ provider "aws" {
   region = "${var.region}"
 }
 
+// ----------------------------------------------------------------------
+// VPC
+// ----------------------------------------------------------------------
+
 module "vpc" {
   source = "github.com/terraform-community-modules/tf_aws_vpc"
 
@@ -27,6 +31,10 @@ module "vpc" {
 
   azs = "us-west-1b,us-west-1c"
 }
+
+// ----------------------------------------------------------------------
+// Firewall
+// ----------------------------------------------------------------------
 
 resource "aws_security_group" "win2008" {
   name        = "win2008"
@@ -72,6 +80,10 @@ resource "aws_security_group" "win2008" {
 
 }
 
+// ----------------------------------------------------------------------
+// DNS
+// ----------------------------------------------------------------------
+
 resource "aws_route53_record" "chefwin2008" {
   zone_id = "${aws_route53_zone.primary.id}"
   zone_id = "${var.streambox_zone}"
@@ -80,6 +92,10 @@ resource "aws_route53_record" "chefwin2008" {
   ttl = "300"
   records = ["${aws_instance.win2008.public_ip}"]
 }
+
+// ----------------------------------------------------------------------
+// Windows EC2 instance
+// ----------------------------------------------------------------------
 
 resource "aws_instance" "win2008" {
   ami = "ami-0d37596d"

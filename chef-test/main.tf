@@ -108,6 +108,12 @@ resource "aws_instance" "win2008" {
   tags { Name = "chef-test-win2008" }
 
   user_data = "${file("user_data.txt")}"
+
+  root_block_device {
+    volume_type = "gp2"
+    volume_size = "100"
+  }
+
 }
 
 output "name" {

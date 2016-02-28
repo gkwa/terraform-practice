@@ -99,7 +99,7 @@ resource "aws_route53_record" "chefwin2008" {
 
 resource "aws_instance" "win2008" {
   ami = "ami-0d37596d"
-  instance_type = "c4.large"
+  instance_type = "c3.large"
   key_name = "taylor-terraform"
   subnet_id = "${module.vpc.id}"
   subnet_id = "${element(split(",", module.vpc.public_subnets), count.index)}"
